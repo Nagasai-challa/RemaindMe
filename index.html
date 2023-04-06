@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta lang="en">
+		<script>
+			function focusFun(ref)
+			{
+				ref.style.boxShadow="4px 1px 8px"
+			}
+			function addTaskFun()	
+			{
+				var val=document.getElementById("txt").value
+				document.getElementById("txt").value=" "
+				if(val!=" ")
+				{
+					/*creating div tag*/
+					var divEle=document.createElement("div")
+					/*creating h1 tag*/
+					var ele=document.createElement("h3")
+					var txtNode=document.createTextNode(val)
+					ele.appendChild(txtNode)
+					/*creating clear button tag*/
+					var delButton=document.createElement("button")
+					var delTextNode=document.createTextNode("COMPLETED")
+					delButton.setAttribute("id","btn2")
+					delButton.appendChild(delTextNode)
+					var ref=document.getElementById("div2")
+					ref.append(divEle)
+					divEle.append(ele)
+					divEle.append(delButton)
+					divEle.setAttribute("id","divEle")
+					ele.style.border="3px solid"
+					ele.style.borderRadius="8px 8px"
+					ele.style.backgroundColor="yellow"
+					ele.style.fontFamily="Georgia"
+					delButton.onclick=function (){
+						var com=document.getElementById("div3")
+						ele.style.width="100%"
+						divEle.removeChild(delButton)
+						com.append(divEle)
+					}
+					
+				}
+			}
+		</script>
+</head>
+<body id="bdy">
+		<div id="div1">
+			<input id="txt" onfocus="focusFun(this)" autocomplete="off"
+			placeholder="Add Your Tasks here" />
+			<button id="btn" type="submit"  onclick="addTaskFun()">ADD TASK</button>
+		</div>
+		<div id="div2">
+			<h3>CURRENT TASKS</h3>
+		</div>
+		<div id="div3">
+			<h3>COMPLETED TASKS</h3>
+		</div>
+</body>
+</html>
